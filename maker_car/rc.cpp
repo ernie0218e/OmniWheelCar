@@ -131,7 +131,7 @@ static uint32_t message_count = 0;
 
 void send_rc(uint8_t len, uint8_t* pData)
 {
-  radio.startWrite( pData, len );
+  radio.startWrite( pData, len ,false);
 }
 /*
 void loop(void)
