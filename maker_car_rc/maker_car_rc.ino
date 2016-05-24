@@ -34,6 +34,7 @@ void loop() {
    button |=  (1 << RC_RF24_BTN_RIGHT);
  else
    button &=  ~(1 << RC_RF24_BTN_RIGHT);
+
 #if 0
 printf("left js (x, y) = (%4d, %4d)\n",read_joystick(E_JOY_STICK_CH_LEFT_X),
             read_joystick(E_JOY_STICK_CH_LEFT_Y) );

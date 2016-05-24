@@ -12,7 +12,7 @@
 #define printf(x, ...)
 
 extern stRcPkt_t rcPacket;
-
+extern volatile int test;
 
 void setup() {
   Serial.begin(115200);      // open the serial port at 115200 bps:
@@ -25,12 +25,13 @@ void setup() {
 void loop() {
  bool battNormal = false;
 
-  //vehicleTestWheelPWM(WHEEL_NUM_REAR_LEFT, WHEEL_DIR_CW, 128);
-  //vehicleTestWheelPWM(WHEEL_NUM_FRONT_LEFT, WHEEL_DIR_CCW, 128);
-  //vehicleTestWheelPWM(WHEEL_NUM_FRONT_RIGHT, WHEEL_DIR_CCW, 128);
-  //vehicleTestWheelPWM(WHEEL_NUM_REAR_RIGHT, WHEEL_DIR_CW, 128);
+//  vehicleTestWheelPWM(WHEEL_NUM_REAR_LEFT, WHEEL_DIR_CW, 128);
+//  vehicleTestWheelPWM(WHEEL_NUM_FRONT_LEFT, WHEEL_DIR_CCW, 128);
+//  vehicleTestWheelPWM(WHEEL_NUM_FRONT_RIGHT, WHEEL_DIR_CCW, 128);
+//  vehicleTestWheelPWM(WHEEL_NUM_REAR_RIGHT, WHEEL_DIR_CW, 128);
   //vehicleTestMove(VEHICLE_DIR_FORWARD_LEFT, 80, 80);
-  delay(500);
+  Serial.println(rcPacket.payLoad.data.axis_left_x);
+  delay(100);
 }
 
 

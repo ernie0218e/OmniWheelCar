@@ -121,7 +121,7 @@ void setup_rc(role_e rcRole)
   // on BOTH the sender and receiver
   //
 
-  attachInterrupt(RC_RF24_INT_NUM, check_radio, FALLING);
+  attachInterrupt(digitalPinToInterrupt(RC_RF24_INT_NUM), check_radio, FALLING);
 }
 
 static uint32_t message_count = 0;
