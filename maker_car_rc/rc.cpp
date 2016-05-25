@@ -196,9 +196,9 @@ void check_radio(void)
 
   // Transmitter can power down for now, because
   // the transmission is done.
-  if ( ( tx || fail ) && ( role == role_sender ) )
+  /*if( ( tx || fail ) && ( role == role_sender ) )
     radio.powerDown();
-
+  */
   // Did we receive a message?
   if ( rx )
   {

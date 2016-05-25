@@ -30,7 +30,10 @@ void loop() {
 //  vehicleTestWheelPWM(WHEEL_NUM_FRONT_RIGHT, WHEEL_DIR_CCW, 128);
 //  vehicleTestWheelPWM(WHEEL_NUM_REAR_RIGHT, WHEEL_DIR_CW, 128);
   //vehicleTestMove(VEHICLE_DIR_FORWARD_LEFT, 80, 80);
-  Serial.println(rcPacket.payLoad.data.axis_left_x);
+// Serial.println(rcPacket.payLoad.data.axis_left_x);
+// Serial.println(rcPacket.payLoad.data.axis_left_y);
+// Serial.println(rcPacket.payLoad.data.axis_right_x);
+// Serial.println(rcPacket.payLoad.data.axis_right_y);
   delay(100);
 }
 
