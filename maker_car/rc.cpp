@@ -25,6 +25,7 @@
 
 // Motor Arm Pattern
 const uint16_t armPattern[] = RC_PKT_ARM_PATTERN;
+volatile int test = 11;
 
 //
 // Hardware configuration
@@ -123,7 +124,7 @@ void setup_rc(role_e rcRole)
   // on BOTH the sender and receiver
   //
 
-  attachInterrupt(RC_RF24_INT_NUM, check_radio, FALLING);
+  attachInterrupt(digitalPinToInterrupt(RC_RF24_INT_NUM), check_radio, FALLING);
 }
 
 static uint32_t message_count = 0;
@@ -131,7 +132,7 @@ static uint32_t message_count = 0;
 
 void send_rc(uint8_t len, uint8_t* pData)
 {
-  radio.startWrite( pData, len );
+  radio.startWrite( pData, len ,false);
 }
 /*
 void loop(void)
@@ -175,7 +176,6 @@ void check_radio(void)
   // What happened?
   bool tx,fail,rx;
   radio.whatHappened(tx,fail,rx);
-
   // Have we successfully transmitted?
   if ( tx )
   {
@@ -255,7 +255,6 @@ void update_rc(uint16_t left_x, uint16_t left_y, uint16_t right_x, uint16_t righ
 
 void parseRC(void* pIncomingPkt) {
   stRcPkt_t* pPkt = (stRcPkt_t*)pIncomingPkt;
-  
   // check packet header
   if(pPkt->header.guidePattern != RC_PKT_GUIDE_PATTERN) {
     printf("ERROR: wrong pkt guide pattern !\n");
@@ -267,13 +266,14 @@ void parseRC(void* pIncomingPkt) {
       printf("batteryLevel: %d", pPkt->payLoad.targetStatus.batteryLevel);
       break;
     case E_RC_CMD_SEND_RC_DATA:
-      printf("LEFT_X: %d\n", pPkt->payLoad.data.axis_left_x);
-      printf("LEFT_Y: %d\n", pPkt->payLoad.data.axis_left_y);
-      printf("RIGHT X: %d\n", pPkt->payLoad.data.axis_right_x);
-      printf("RIGHT Y: %d\n", pPkt->payLoad.data.axis_right_y);
-      printf("button: 0x%2x\n", pPkt->payLoad.data.button);
-      printf("led: 0x%2x\n", pPkt->payLoad.data.led);
-      onLed((ENUM_LED_CH_t)pPkt->payLoad.data.led);
+//      printf("LEFT_X: %d\n", pPkt->payLoad.data.axis_left_x);
+//      printf("LEFT_Y: %d\n", pPkt->payLoad.data.axis_left_y);
+//      printf("RIGHT X: %d\n", pPkt->payLoad.data.axis_right_x);
+//      printf("RIGHT Y: %d\n", pPkt->payLoad.data.axis_right_y);
+//      printf("button: 0x%2x\n", pPkt->payLoad.data.button);
+//      printf("led: 0x%2x\n", pPkt->payLoad.data.led);
+//      onLed((ENUM_LED_CH_t)pPkt->payLoad.data.led);
+      
       if(!vehicleRotate(pPkt->payLoad.data.axis_right_x))
         vehicleMove(pPkt->payLoad.data.axis_left_x, pPkt->payLoad.data.axis_left_y);
       break;

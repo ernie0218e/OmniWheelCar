@@ -2,7 +2,7 @@
 #define RC_RF24_CSN_PIN 8
 #define RC_RF24_ROLL_PIN 3
 
-#define RC_RF24_INT_NUM 0
+#define RC_RF24_INT_NUM 3
 
 #define RC_RF24_PIPE_ADDR 0xE8E8F0F0E1LL // Black
 //#define RC_RF24_PIPE_ADDR 0x98E8F0F0E1LL // Yellow

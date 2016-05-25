@@ -121,7 +121,7 @@ void setup_rc(role_e rcRole)
   // on BOTH the sender and receiver
   //
 
-  attachInterrupt(RC_RF24_INT_NUM, check_radio, FALLING);
+  attachInterrupt(digitalPinToInterrupt(RC_RF24_INT_NUM), check_radio, FALLING);
 }
 
 static uint32_t message_count = 0;
@@ -129,7 +129,7 @@ static uint32_t message_count = 0;
 
 void send_rc(uint8_t len, uint8_t* pData)
 {
-  radio.startWrite( pData, len );
+  radio.startWrite( pData, len, false );
 }
 /*
 void loop(void)

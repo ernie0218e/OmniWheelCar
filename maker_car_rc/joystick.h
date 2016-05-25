@@ -7,8 +7,7 @@
 #define JOY_STICK_RIGHT_Y_PIN A2
 // buttons
 #define JOY_STICK_BUTTON_PIN_0 3 // Left js button
-#define JOY_STICK_BUTTON_PIN_1 4 // Right js button
-#define JOY_STICK_BUTTON_PIN_2
+#define JOY_STICK_BUTTON_PIN_1 2 // Right js button
 
 // RGB LED
 //#define JOY_STICK_LED_R
